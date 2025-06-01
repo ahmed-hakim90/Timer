@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>العد التنازلي - 30 يوم</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- الحاوية الرئيسية للتايمر -->
+    <div class="timer-container">
+        <!-- عنوان التايمر -->
+        <h1 class="timer-title">العد التنازلي</h1>
+        
+        <!-- مكونات التايمر -->
+        <div class="timer-display">
+            <!-- الأيام -->
+            <div class="time-unit">
+                <div class="time-value" id="days">30</div>
+                <div class="time-label">يوم</div>
+            </div>
+            
+            <!-- الساعات -->
+            <div class="time-unit">
+                <div class="time-value" id="hours">00</div>
+                <div class="time-label">ساعة</div>
+            </div>
+            
+            <!-- الدقائق -->
+            <div class="time-unit">
+                <div class="time-value" id="minutes">00</div>
+                <div class="time-label">دقيقة</div>
+            </div>
+            
+            <!-- الثواني -->
+            <div class="time-unit">
+                <div class="time-value" id="seconds">00</div>
+                <div class="time-label">ثانية</div>
+            </div>
+        </div>
+        
+        <!-- رسالة انتهاء الوقت (مخفية في البداية) -->
+        <div class="finished-message" id="finishedMessage" style="display: none;">
+            <h2>انتهى الوقت!</h2>
+            <p>تم الوصول إلى نهاية العد التنازلي</p>
+            <button onclick="resetTimer()" class="reset-button">إعادة تشغيل العداد</button>
+        </div>
+    </div>
+
+    <!-- تحميل ملف JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
