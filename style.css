@@ -8,42 +8,118 @@
 /* تنسيق الصفحة الأساسي */
 body {
     font-family: 'Arial', sans-serif;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: black;
     min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    direction: rtl;
+    /* direction: rtl; */
     /* إمكانية إضافة خلفية مخصصة */
+
     background-attachment: fixed;
     background-size: cover;
     background-position: center;
 }
 
+/*// Glow Border Animation //*/
+
+.animated-border-box,
+.animated-border-box-glow {
+    max-width: 600px;
+    height: 120px;
+    width: 100%;
+    position: absolute;
+    overflow: hidden;
+    z-index: 0;
+    /* Border Radius */
+    border-radius: 60px;
+}
+
+.animated-border-box-glow {
+    overflow: hidden;
+    /* Glow Blur */
+    filter: blur(8px);
+}
+
+.animated-border-box:before,
+.animated-border-box-glow:before {
+    content: '';
+    z-index: -2;
+    text-align: center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(0deg);
+    position: absolute;
+    width: 99999px;
+    height: 99999px;
+    background-repeat: no-repeat;
+    background-position: 0 0;
+    /*border color, change middle color*/
+    background-image: conic-gradient(rgba(0, 0, 0, 0), #ea9a00, rgba(0, 0, 0, 0) 25%);
+    /* change speed here */
+    animation: rotate 4s linear infinite;
+}
+
+.animated-border-box:after {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    /* border width */
+    left: 1px;
+    top: 1px;
+    /* double the px from the border width left */
+    width: calc(100% - 1px);
+    height: calc(100% - 2px);
+    /*bg color*/
+    background: #292a2e;
+    /*box border radius*/
+    border-radius: 60px;
+}
+
+@keyframes rotate {
+    100% {
+        transform: translate(-50%, -50%) rotate(1turn);
+    }
+}
+
+/*// Border Animation END//*/
+
+
 /* الحاوية الرئيسية للتايمر */
 .timer-container {
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(10px);
-    border-radius: 20px;
-    padding: 40px;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #1D1E22;
+    max-height: 120px;
+    border-radius: 50px;
     text-align: center;
     max-width: 600px;
-    width: 90%;
-    animation: fadeIn 1s ease-in-out;
+    background: linear-gradient(100deg, transparent, #ea9a00, transparent);
+
+}
+
+.col-left,
+.col-right {
+    position: relative;
+    width: 12px;
+    height: 110px;
+    z-index: 2;
+    border-radius: 10px;
+    background-color: #333;
+
+}
+
+.col-left {
+    left: -305px;
+}
+
+.col-right {
+    right: -305px;
+
 }
 
 /* تأثير الظهور التدريجي */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
 
 /* عنوان التايمر */
 .timer-title {
@@ -60,31 +136,38 @@ body {
     justify-content: center;
     align-items: center;
     gap: 20px;
+    justify-content: space-around;
     flex-wrap: wrap;
-    margin-bottom: 20px;
+    direction: ltr;
+    /* margin-bottom: 20px; */
 }
 
 /* وحدة الوقت الفردية */
 .time-unit {
-    background: linear-gradient(145deg, #f0f0f0, #cacaca);
-    border-radius: 15px;
-    padding: 20px;
+    /* background: #444;; */
+
+    padding-top: 20px;
     min-width: 100px;
-    box-shadow: 
+    /* box-shadow: 
         5px 5px 15px rgba(0, 0, 0, 0.2),
         -5px -5px 15px rgba(255, 255, 255, 0.7);
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease; */
 }
-
-.time-unit:hover {
-    transform: translateY(-5px);
+.time-unit:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  top: 10%;
+  right: 0;
+  width: 1px;
+  height: 80%;
+  background: gold;
 }
 
 /* قيمة الوقت */
 .time-value {
     font-size: 3rem;
-    font-weight: bold;
-    color: #444;
+    font-weight: 300;
+    color: #ea9a00;
     line-height: 1;
     margin-bottom: 10px;
     font-family: 'Courier New', monospace;
@@ -93,9 +176,9 @@ body {
 
 /* تسمية الوقت */
 .time-label {
-    font-size: 1rem;
-    color: #666;
-    font-weight: 600;
+    font-size: 0.7rem;
+    color: #ea9a00;
+    font-weight: 100;
     text-transform: uppercase;
     letter-spacing: 1px;
 }
@@ -138,44 +221,32 @@ body {
     box-shadow: 0 6px 20px rgba(52, 152, 219, 0.6);
 }
 
-/* تأثير النبض */
-@keyframes pulse {
-    0% {
-        transform: scale(1);
-    }
-    50% {
-        transform: scale(1.05);
-    }
-    100% {
-        transform: scale(1);
-    }
-}
-
+/* 
 /* تصميم متجاوب للشاشات الصغيرة */
 @media (max-width: 768px) {
     .timer-container {
         padding: 25px;
         width: 95%;
     }
-    
+
     .timer-title {
         font-size: 2rem;
         margin-bottom: 25px;
     }
-    
+
     .timer-display {
         gap: 15px;
     }
-    
+
     .time-unit {
         min-width: 80px;
-        padding: 15px;
+
     }
-    
+
     .time-value {
         font-size: 2.2rem;
     }
-    
+
     .time-label {
         font-size: 0.9rem;
     }
@@ -185,24 +256,24 @@ body {
     .timer-display {
         gap: 10px;
     }
-    
+
     .time-unit {
         min-width: 70px;
         padding: 12px;
     }
-    
+
     .time-value {
         font-size: 1.8rem;
     }
-    
+
     .time-label {
         font-size: 0.8rem;
     }
-    
+
     .timer-title {
         font-size: 1.8rem;
     }
-    
+
     .finished-message h2 {
         font-size: 2rem;
     }
@@ -214,9 +285,12 @@ body {
 }
 
 @keyframes bounce {
-    0%, 100% {
+
+    0%,
+    100% {
         transform: translateY(0);
     }
+
     50% {
         transform: translateY(-10px);
     }
