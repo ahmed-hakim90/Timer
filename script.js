@@ -99,13 +99,13 @@ function updateDisplay(days, hours, minutes, seconds) {
  */
 function updateElementWithAnimation(element, newValue) {
     if (element.textContent !== newValue) {
-        element.parentElement.classList.add('animate');
+        // element.parentElement.classList.add('animate');
         element.textContent = newValue;
         
         // إزالة تأثير الحركة بعد انتهائه
-        setTimeout(() => {
-            element.parentElement.classList.remove('animate');
-        }, 600);
+        // setTimeout(() => {
+        //     element.parentElement.classList.remove('animate');
+        // }, 600);
     }
 }
 

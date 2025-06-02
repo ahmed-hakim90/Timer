@@ -7,95 +7,250 @@
 
 /* تنسيق الصفحة الأساسي */
 body {
-    font-family: 'Arial', sans-serif;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    direction: rtl;
+    font-family: 'Now', sans-serif;
+    background: black;
+    /* min-height: 100vh; */
+    /* display: flex; */
+    /* justify-content: center; */
+    /* align-items: center; */
+    /* direction: rtl; */
     /* إمكانية إضافة خلفية مخصصة */
+
     background-attachment: fixed;
     background-size: cover;
     background-position: center;
 }
 
+/*// Glow Border Animation //*/
+
+.animated-border-box,
+.animated-border-box-glow {
+    max-width: 600px;
+    /* height: 120px; */
+    width: 100%;
+    position: absolute;
+    overflow: hidden;
+
+    /* top:45%; */
+    z-index: 0;
+    /* Border Radius */
+    border-radius: 60px;
+}
+
+.animated-border-box-glow {
+    overflow: hidden;
+    /* Glow Blur */
+    filter: blur(8px);
+}
+
+.animated-border-box:before,
+.animated-border-box-glow:before {
+    content: '';
+    z-index: -2;
+    text-align: center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(0deg);
+    position: absolute;
+    width: 99999px;
+    height: 99999px;
+    background-repeat: no-repeat;
+    background-position: 0 0;
+    /*border color, change middle color*/
+    background-image: conic-gradient(rgba(0, 0, 0, 0), #ea9a00, rgba(0, 0, 0, 0) 25%);
+    /* change speed here */
+    animation: rotate 4s linear infinite;
+}
+
+.animated-border-box:after {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    /* border width */
+    left: 1px;
+    top: 1px;
+    /* double the px from the border width left */
+    width: calc(100% - 1px);
+    height: calc(100% - 2px);
+    /*bg color*/
+    background: #141414;
+    /*box border radius*/
+    border-radius: 60px;
+}
+
+@keyframes rotate {
+    100% {
+        transform: translate(-50%, -50%) rotate(1turn);
+    }
+}
+
+.logo-in-top {
+    display: flex;
+    justify-content: end;
+    color: aliceblue;
+}
+
+.list-icon {
+    /* display: flex; */
+    /* flex-direction: column; */
+    /* align-items: end; */
+    position: fixed;
+    bottom: 0;
+    left: 0;
+}
+
+[dir="rtl"] .list-icon {
+    left: auto;
+    /* Reset left positioning */
+    right: 0;
+    /* Position from the right */
+}
+
+.icon-in-bottom {
+    color: aliceblue;
+}
+
+/*// Border Animation END//*/
+
+.timer-label {
+    color: #2980b9;
+    font-size: 22px;
+    display: block;
+}
+
 /* الحاوية الرئيسية للتايمر */
 .timer-container {
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(10px);
-    border-radius: 20px;
-    padding: 40px;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    position: absolute;
+    /* Or fixed, if you want it to stay centered on scroll */
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /* Keep its width and height */
+    /* width: 390.4px; */
+    /* height: 63.4px; */
+    /* You might need to adjust z-index if it overlaps with other elements */
+    z-index: 10;
+    /* display: flex; */
+    /* flex-direction: column; */
+    /* justify-content: center; */
+    /* Centers items horizontally */
+    /* align-items: center; */
+    /* Centers items vertically if desired */
+    /* min-height: 80vh; */
+    /* Optional: to center vertically on the viewport height */
+    margin: 0;
+    /* Reset default body margin */
+    /* display: flex; */
+    /* justify-content: center; */
+    /* align-items: center; */
+    margin-left: auto;
+    margin-right: auto;
+    /* Keep your existing width */
+    width: 100%;
+    /* max-height: 120px; */
+    border-radius: 50px;
     text-align: center;
-    max-width: 600px;
-    width: 90%;
-    animation: fadeIn 1s ease-in-out;
+    max-width: 580px;
+
+    /* الخط الذهبي الثابت حول البوكس */
+    /* background: linear-gradient(100deg, transparent, #ea9a00, transparent); */
+
+}
+
+.Container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: space-between;
+}
+
+.col-left,
+.col-right {
+    position: absolute;
+    width: 12px;
+    height: 110px;
+    z-index: 2;
+    border-radius: 10px;
+    background-color: #141414;
+
+}
+
+.col-left {
+    left: -58%;
+}
+
+.col-right {
+    right: 58%;
+
 }
 
 /* تأثير الظهور التدريجي */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
 
 /* عنوان التايمر */
 .timer-title {
     font-size: 2.5rem;
-    color: #333;
+    color: #fff;
     margin-bottom: 30px;
-    font-weight: bold;
+    font-weight: 200;
+    text-transform:uppercase ;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    letter-spacing: 1px;
+
 }
 
 /* عرض التايمر */
 .timer-display {
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
     gap: 20px;
+
+    margin: 16px;
+    /* justify-content: space-around; */
     flex-wrap: wrap;
-    margin-bottom: 20px;
+    direction: ltr;
+    /* margin-bottom: 20px; */
+
+}
+
+.timer-display span {
+    border: 1px solid rgba(238, 255, 255, 0.238);
+    height: 35px;
+    margin-top: 15px;
+
 }
 
 /* وحدة الوقت الفردية */
 .time-unit {
-    background: linear-gradient(145deg, #f0f0f0, #cacaca);
-    border-radius: 15px;
-    padding: 20px;
-    min-width: 100px;
-    box-shadow: 
+    /* background: #444;; */
+    padding: 1px;
+    /* margin: 10px; */
+    /* box-shadow: 
         5px 5px 15px rgba(0, 0, 0, 0.2),
         -5px -5px 15px rgba(255, 255, 255, 0.7);
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease; */
 }
 
-.time-unit:hover {
-    transform: translateY(-5px);
-}
+/* .time-unit:not(:first-child) {
+border-left: 1px solid gold;
+} */
 
 /* قيمة الوقت */
 .time-value {
-    font-size: 3rem;
-    font-weight: bold;
-    color: #444;
+    font-size: 2.5rem;
+    font-weight: 500;
+    color: #ea980060;
     line-height: 1;
-    margin-bottom: 10px;
-    font-family: 'Courier New', monospace;
+    margin-bottom: 5px;
+    font-family: 'Now', monospace;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
 }
 
 /* تسمية الوقت */
 .time-label {
-    font-size: 1rem;
-    color: #666;
-    font-weight: 600;
+    font-size: 0.4rem;
+    color: #ea980040;
+    font-weight: 100;
     text-transform: uppercase;
     letter-spacing: 1px;
 }
@@ -138,44 +293,42 @@ body {
     box-shadow: 0 6px 20px rgba(52, 152, 219, 0.6);
 }
 
-/* تأثير النبض */
-@keyframes pulse {
-    0% {
-        transform: scale(1);
-    }
-    50% {
-        transform: scale(1.05);
-    }
-    100% {
-        transform: scale(1);
-    }
-}
-
+/* 
 /* تصميم متجاوب للشاشات الصغيرة */
 @media (max-width: 768px) {
-    .timer-container {
-        padding: 25px;
+
+    .animated-border-box,
+    .animated-border-box-glow {
+        /* display: flex; */
         width: 95%;
+
+        margin: 10px;
+        padding: 2px;
     }
-    
+
+    .timer-container {
+        /* padding: 25px; */
+        /* width: 95%; */
+    }
+
     .timer-title {
         font-size: 2rem;
         margin-bottom: 25px;
     }
-    
+
     .timer-display {
         gap: 15px;
     }
-    
+
     .time-unit {
         min-width: 80px;
-        padding: 15px;
+
     }
-    
+
     .time-value {
         font-size: 2.2rem;
     }
-    
+
     .time-label {
         font-size: 0.9rem;
     }
@@ -184,25 +337,27 @@ body {
 @media (max-width: 480px) {
     .timer-display {
         gap: 10px;
+        margin: 3px;
+        padding: 3px;
     }
-    
+
     .time-unit {
         min-width: 70px;
-        padding: 12px;
+        /* padding: 12px; */
     }
-    
+
     .time-value {
         font-size: 1.8rem;
     }
-    
+
     .time-label {
-        font-size: 0.8rem;
+        font-size: 0.6rem;
     }
-    
+
     .timer-title {
         font-size: 1.8rem;
     }
-    
+
     .finished-message h2 {
         font-size: 2rem;
     }
@@ -214,9 +369,12 @@ body {
 }
 
 @keyframes bounce {
-    0%, 100% {
+
+    0%,
+    100% {
         transform: translateY(0);
     }
+
     50% {
         transform: translateY(-10px);
     }
