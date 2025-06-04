@@ -5,9 +5,20 @@
     box-sizing: border-box;
 }
 
+@font-face {
+    font-family: ConsoExtraLight;
+    src: url(Fonts/Conso-ExtraLight.otf);
+    font-family: ConsoThin;
+    src: url(Fonts/Conso-Thin.otf);
+    font-family: GothamBold;
+    src: url(Fonts/Gotham-Bold.otf);
+    font-family: GothamThin;
+    src: url(Fonts/Gotham-Thin.otf);
+}
+
 /* تنسيق الصفحة الأساسي */
 body {
-    font-family: 'Now', sans-serif;
+    font-family: 'GothamBold';
     background: black;
     /* min-height: 100vh; */
     /* display: flex; */
@@ -19,6 +30,12 @@ body {
     background-attachment: fixed;
     background-size: cover;
     background-position: center;
+}
+
+a{
+    text-decoration: none;
+    color: none
+    ;
 }
 
 /*// Glow Border Animation //*/
@@ -57,7 +74,7 @@ body {
     background-repeat: no-repeat;
     background-position: 0 0;
     /*border color, change middle color*/
-    background-image: conic-gradient(rgba(0, 0, 0, 0), #ea9a00, rgba(0, 0, 0, 0) 25%);
+    background-image: conic-gradient(rgba(0, 0, 0, 0), #7C5B00, rgba(0, 0, 0, 0) 25%);
     /* change speed here */
     animation: rotate 4s linear infinite;
 }
@@ -82,11 +99,15 @@ body {
     100% {
         transform: translate(-50%, -50%) rotate(1turn);
     }
+    
 }
 
 .logo-in-top {
-    display: flex;
-    justify-content: end;
+    position: fixed;
+    right: 0;
+    top: 0;
+    left: auto;
+    /* justify-content: end; */
     color: aliceblue;
 }
 
@@ -111,25 +132,26 @@ body {
 }
 
 /*// Border Animation END//*/
+.Container {
+    /* display: flex;     */
+    /* height: 100vh; */
+    /* display: grid */
 
-.timer-label {
-    color: #2980b9;
-    font-size: 22px;
-    display: block;
+    /* place-items: ; */
 }
+
 
 /* الحاوية الرئيسية للتايمر */
 .timer-container {
-    position: absolute;
+     position: absolute; 
+    transform: translate(-50%, -50%); 
     /* Or fixed, if you want it to stay centered on scroll */
-    top: 40%;
+    top: 47%;
     left: 50%;
-    transform: translate(-50%, -50%);
     /* Keep its width and height */
-    /* width: 390.4px; */
-    /* height: 63.4px; */
     /* You might need to adjust z-index if it overlaps with other elements */
     z-index: 10;
+    /* Example */
     /* display: flex; */
     /* flex-direction: column; */
     /* justify-content: center; */
@@ -151,51 +173,51 @@ body {
     border-radius: 50px;
     text-align: center;
     max-width: 580px;
-
     /* الخط الذهبي الثابت حول البوكس */
     /* background: linear-gradient(100deg, transparent, #ea9a00, transparent); */
-
+      /* position: relative; يسمح للعناصر المطلقة جوّه تكون مرتبطة بيه */
+  /* width: 800px; */
+  /* margin: 40px auto; */
+  /* background: #111; */
+  border-radius: 50px;
+  overflow: hidden;
+}
+.bulk-glowing{
+height: 100px;
+width: 200px;
 }
 
-.Container {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    justify-content: space-between;
+.reserve {
+    text-align: center;
+    margin-top: 30px;
+    font-size: 1.6rem;
+    color: #7C5B00;
 }
 
-.col-left,
-.col-right {
-    position: absolute;
-    width: 12px;
-    height: 110px;
-    z-index: 2;
-    border-radius: 10px;
-    background-color: #141414;
-
+.ticket-btn {
+  margin-top: 15px;
+  padding: 8px 10px;
+  border: 1px solid #7C5B00;
+  background: transparent;
+  color: #7C5B00;
+  border-radius: 20px;
+  font-size: 1rem;
+  cursor: pointer;
+  
+a{
+    text-decoration: none;
+    color: #7C5B00
+    ;
 }
-
-.col-left {
-    left: -58%;
 }
-
-.col-right {
-    right: 58%;
-
-}
-
-/* تأثير الظهور التدريجي */
 
 /* عنوان التايمر */
 .timer-title {
     font-size: 2.5rem;
     color: #fff;
-    margin-bottom: 30px;
-    font-weight: 200;
-    text-transform:uppercase ;
+    margin-bottom: 24px;
+    font-weight: bold;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
-    letter-spacing: 1px;
-
 }
 
 /* عرض التايمر */
@@ -204,10 +226,9 @@ body {
     justify-content: space-around;
     align-items: center;
     gap: 20px;
-
     margin: 16px;
     /* justify-content: space-around; */
-    flex-wrap: wrap;
+    /* flex-wrap: wrap; */
     direction: ltr;
     /* margin-bottom: 20px; */
 
@@ -217,7 +238,6 @@ body {
     border: 1px solid rgba(238, 255, 255, 0.238);
     height: 35px;
     margin-top: 15px;
-
 }
 
 /* وحدة الوقت الفردية */
@@ -231,29 +251,28 @@ body {
     transition: transform 0.3s ease; */
 }
 
-/* .time-unit:not(:first-child) {
-border-left: 1px solid gold;
-} */
+
 
 /* قيمة الوقت */
 .time-value {
-    font-size: 2.5rem;
-    font-weight: 500;
-    color: #ea980060;
+    font-size: 3rem;
+    font-weight: 300;
+    color: #7C5B00;
     line-height: 1;
     margin-bottom: 5px;
-    font-family: 'Now', monospace;
+    font-family: 'Courier New', monospace;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
 }
 
 /* تسمية الوقت */
 .time-label {
-    font-size: 0.4rem;
-    color: #ea980040;
+    font-size: 0.6rem;
+    color: #7C5B00;
     font-weight: 100;
     text-transform: uppercase;
     letter-spacing: 1px;
 }
+
 
 /* رسالة انتهاء الوقت */
 .finished-message {
@@ -335,6 +354,10 @@ border-left: 1px solid gold;
 }
 
 @media (max-width: 480px) {
+    .bulk-glowing{
+height: 60px;
+width: 200px;
+}
     .timer-display {
         gap: 10px;
         margin: 3px;
@@ -387,7 +410,7 @@ body.custom-bg {
 
 /* متغيرات CSS للتخصيص المستقبلي */
 :root {
-    --primary-color: #667eea;
+    --primary-color: #7C5B00;
     --secondary-color: #764ba2;
     --accent-color: #3498db;
     --text-color: #333;

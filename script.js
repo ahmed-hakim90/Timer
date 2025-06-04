@@ -20,7 +20,8 @@ function initializeTimer() {
     if (savedEndTime) {
         // استخدام الوقت المحفوظ
         countdownDate = new Date(savedEndTime);
-        
+        console.log(savedEndTime);
+
         // التحقق من صحة الوقت المحفوظ
         if (countdownDate <= new Date()) {
             // إذا كان الوقت قد انتهى، إعادة تعيين التايمر
@@ -29,9 +30,9 @@ function initializeTimer() {
         }
     } else {
         // إنشاء تايمر جديد (30 يوم من الآن)
-        countdownDate = new Date();
-        countdownDate.setDate(countdownDate.getDate() + 30);
-        
+        countdownDate = new Date('2025-07-06T17:00:00');
+        // countdownDate.setDate(countdownDate.getDate());
+        console.log(countdownDate);
         // حفظ وقت الانتهاء في Local Storage
         localStorage.setItem('countdownEndTime', countdownDate.toISOString());
     }

@@ -1,67 +1,87 @@
 <!DOCTYPE html>
 <html lang="ar" dir="ltr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Counter Down</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <div class=" Container">
-        
-        <div class="logo-in-top">logooooooooooooooooooooooo</div>
-    <!-- الحاوية الرئيسية للتايمر -->
-    <div class="timer-container">
-        <p class="timer-title">
-            A New Era of Ancient </br>
-            <span ></span>wonders begins in...<span ></span>
-        </p>
-        
-        <div class="animated-border-box-glow">
-        </div>
-        <div class="animated-border-box">
-      
-    
-        <!-- مكونات التايمر -->
-        <div class="timer-display">
-         
-   <!-- الأيام -->
-            <div class="time-unit">
-                <div class="time-value" id="days">30</div>
-                <div class="time-label">Days</div>
-            </div>    
-            <span></span>
 
-            <!-- الساعات -->
-            <div class="time-unit">
-                <div class="time-value" id="hours">00</div>
-                <div class="time-label">Hours</div>
-            </div>            
-            <span></span>
+        <div class="logo-in-top">LOGO</div>
+        <!-- الحاوية الرئيسية للتايمر -->
+        <div class="timer-container">
+            <p class="timer-title">
+                A new era of ancient </br>
+                <span></span>wonders begins in...<span></span>
+            </p>
 
-            <!-- الدقائق -->
-            <div class="time-unit">
-                <div class="time-value" id="minutes">00</div>
-                <div class="time-label">Mins</div>
+            <div class="center-box">
+                <!-- START Box -->
+            
+
+                <div class="animated-border-box-glow"></div>
+                <div class="animated-border-box">
+                    <!-- Inside the Box -->
+                    <div class="timer-display">
+
+                        <!-- الأيام -->
+                        <div class="time-unit">
+                            <div class="time-value" id="days">30</div>
+                            <div class="time-label">Days</div>
+                        </div>
+                        <span></span>
+
+                        <!-- الساعات -->
+                        <div class="time-unit">
+                            <div class="time-value" id="hours">00</div>
+                            <div class="time-label">Hours</div>
+                        </div>
+                        <span></span>
+
+                        <!-- الدقائق -->
+                        <div class="time-unit">
+                            <div class="time-value" id="minutes">00</div>
+                            <div class="time-label">Mins</div>
+                        </div>
+                        <span></span>
+
+                        <!-- الثواني -->
+                        <div class="time-unit">
+                            <div class="time-value" id="seconds">00</div>
+                            <div class="time-label">Secs</div>
+                        </div>
+                    </div>
+
+
+                    <!-- رسالة انتهاء الوقت (مخفية في البداية) -->
+                    <div class="finished-message" id="finishedMessage" style="display: none;">
+                        <h2>انتهى الوقت!</h2>
+                        <p>تم الوصول إلى نهاية العد التنازلي</p>
+                        <button onclick="resetTimer()" class="reset-button">إعادة تشغيل العداد</button>
+                    </div>
+                </div>
+                <!-- END -->
             </div>
-            <span></span>
-         
-           <!-- الثواني -->
-            <div class="time-unit">
-                <div class="time-value" id="seconds">00</div>
-                <div class="time-label">Secs</div>
+            <div class="bulk-glowing">
+            </div>
+
+
+            <div class="reserve">
+                <p class="text-under-counter">
+                    Opening to the public on 6 July
+    
+                </p>
+                <button class="button ticket-btn" ><a href="https://visit-gem.com/en/GEMIntro_blank" >
+
+                    Click here to reserve your ticket
+                </a>
+                </button>
             </div>
         </div>
-        
-        <!-- رسالة انتهاء الوقت (مخفية في البداية) -->
-        <div class="finished-message" id="finishedMessage" style="display: none;">
-            <h2>انتهى الوقت!</h2>
-            <p>تم الوصول إلى نهاية العد التنازلي</p>
-            <button onclick="resetTimer()" class="reset-button">إعادة تشغيل العداد</button>
-        </div>
-    
-
-    </div>
     </div>
     <div class="list-icon">
 
@@ -72,9 +92,10 @@
         </ul>
     </div>
 
-</div>
+    </div>
     <!-- تحميل ملف JavaScript -->
     <script src="script.js"></script>
 </body>
+
 </html>
 *-
