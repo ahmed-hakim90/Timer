@@ -17,8 +17,15 @@
     src: url(Fonts/Gotham-Bold.otf);
     font-family: GothamThin;
     src: url(Fonts/Gotham-Thin.otf);
+    font-family: GretaArabic;
+    src: url(Fonts/GretaArabic-Light.otf);
 }
-
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden; /* ده يمنع الـ scroll نهائيًا */
+  height: 100%;
+}
 /* تنسيق الصفحة الأساسي */
 body {
     font-family: 'oggRoman';
