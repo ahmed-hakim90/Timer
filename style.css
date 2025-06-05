@@ -291,8 +291,6 @@ a {
 
 @media (max-width: 768px) {
 
-    .animated-border-box,
-    .animated-border-box-glow,
     .glow-box {
         width: 95%;
         margin: 10px;
@@ -323,8 +321,12 @@ a {
 }
 
 @media (max-width: 480px) {
-
-
+.glow-box {
+        width: 95%;
+        margin: 10px;
+        padding: 6px;
+        height: 70px;
+}
     .timer-display {
         gap: 10px;
         margin: 3px;
