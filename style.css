@@ -9,6 +9,9 @@
     font-family: ConsoExtraLight;
     src: url(Fonts/Conso-ExtraLight.otf);
     font-family: ConsoThin;
+    font-family: oggRoman;
+    src: url(Fonts/Ogg-Roman.ttf);
+    font-family: ConsoThin;
     src: url(Fonts/Conso-Thin.otf);
     font-family: GothamBold;
     src: url(Fonts/Gotham-Bold.otf);
@@ -18,18 +21,26 @@
 
 /* تنسيق الصفحة الأساسي */
 body {
-    font-family: 'GothamBold';
+    font-family: 'oggRoman';
     background: black;
-    /* min-height: 100vh; */
+    min-height: 100vh;
     /* display: flex; */
     /* justify-content: center; */
     /* align-items: center; */
     /* direction: rtl; */
     /* إمكانية إضافة خلفية مخصصة */
 
-    background-attachment: fixed;
+    /* background-attachment: fixed; */
     background-size: cover;
+    /* background-position: center; */
+    background-size: cover;
+    /* تغطي الشاشة بالكامل */
     background-position: center;
+    /* توسيط الصورة */
+    background-repeat: no-repeat;
+    /* منع التكرار */
+    background-attachment: round;
+    /* تثبيت الخلفية أثناء التمرير (اختياري) */
 }
 
 a {
@@ -37,65 +48,75 @@ a {
     color: none;
 }
 
-/*// Glow Border Animation //*/
-    .glow-box {
-      position: relative;
-      max-width: 580px;
-      max-height: 120px;
-      border-radius: 60px;
-      background: #111;
-      z-index: 1;
-      overflow: hidden;
-    }
 
-    .glow-box::before {
-      content: "";
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: conic-gradient(
+/*// Glow Border Animation //*/
+.glow-box {
+    position: relative;
+    max-width: 580px;
+    max-height: 120px;
+    border-radius: 60px;
+    background: #111;
+    z-index: 1;
+    display: flex;
+    overflow: hidden;
+    align-items: center;
+    justify-content: center;
+}
+
+.glow-box::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+
+    /* background: conic-gradient(
         from 0deg,
         transparent 0deg,
-        #7C5B00 90deg,
+        #ce9a28 90deg,
         transparent 180deg,
-        #7C5B00 27deg,
+        #ce9a28 27deg,
         transparent 360deg
-      );
-      animation: rotateGlow 4s linear infinite;
-      z-index: 2;
-      filter: blur(6px);
-      border-radius: 60px;
-    }
+      ); */
+    background-image: conic-gradient(rgba(0, 0, 0, 0), #ce9a28, rgba(0, 0, 0, 0) 25%);
 
-    .glow-box::after {
-      content: "";
-      position: absolute;
-      top: 2px;
-      left: 2px;
-      right: 2px;
-      bottom: 2px;
-      background: #111;
-      border-radius: 60px;
-      z-index: 3;
-    }
+    animation: rotateGlow 4s linear infinite;
+    z-index: 2;
+    filter: blur(6px);
+    border-radius: 60px;
+}
 
-    @keyframes rotateGlow {
-      0% {
+.glow-box::after {
+    content: "";
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    right: 2px;
+    bottom: 2px;
+    background: #111;
+    border-radius: 60px;
+    z-index: 3;
+}
+
+@keyframes rotateGlow {
+    0% {
         transform: rotate(0deg);
-      }
-      100% {
-        transform: rotate(360deg);
-      }
     }
-    .timer-display {
-  position: relative;
-  z-index: 5; /* فوق التوهج */
-  color: white;
-  text-align: center;
-  padding: 20px;
-  font-family: Arial, sans-serif;
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.timer-display {
+    position: relative;
+    z-index: 5;
+    /* فوق التوهج */
+    color: white;
+    text-align: center;
+    padding: 20px;
+    font-family: oggRoman, sans-serif;
 }
 
 .logo-in-top {
@@ -115,49 +136,71 @@ a {
     position: fixed;
     bottom: 20px;
     left: -10px;
-    img{
+
+    img {
         /* max-width: px; */
         max-height: 100px;
 
     }
 }
- .logo-container {
-      position: fixed;
-      bottom: 10px;
-      left: -20px;
-      width: 150px;
-      height: 150px;
- background-image: url('icons/Iconspng/1-03.png'); /* 🔁 هنا صورة البرواز */
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
+
+.logo-container {
+    position: fixed;
+    bottom: 10px;
+    left: -20px;
+    width: 150px;
+    height: 150px;
+    /* background-image: url('icons/Iconspng/1-03.png'); 🔁 هنا صورة البرواز */
+    /* background-size: cover; */
+    /* background-position: center; */
+    /* background-repeat: no-repeat; */
+}
+
+.logo-container img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    animation: fadeLoop 10s infinite ease-in-out;
+}
+
+.logo-container .logo2 {
+    animation-delay: 2s;
+    /* تبدأ متأخرة عن الأولى */
+}
+
+.logo-container .logo3 {
+    animation-delay: 6s;
+    /* تبدأ متأخرة عن الأولى */
+}
+
+.logo-container .logo4 {
+    animation-delay: 6s;
+    /* تبدأ متأخرة عن الأولى */
+}
+
+@keyframes fadeLoop {
+
+    0%,
+    20% {
+        opacity: 1;
     }
 
-    .logo-container img {
+    50%,
+    100% {
+        opacity: 0;
+    }
+}
 
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      top: 0;
-      left: 0;
-      opacity: 0;
-      animation: fadeLoop 4s infinite ease-in-out;
-    }
-
-    .logo-container .logo2 {
-      animation-delay: 2s; /* تبدأ متأخرة عن الأولى */
-    }
-
-    @keyframes fadeLoop {
-      0%, 20%   { opacity: 1; }
-      50%, 100% { opacity: 0; }
-    }
-    
-    .frame {
-      z-index: 10; /* فوق اللوجوهات */
-      pointer-events: none; /* علشان الماوس يعدي من غير ما يمنع التفاعل */
-    }
+.frame {
+    z-index: 10;
+    /* فوق اللوجوهات */
+    pointer-events: none;
+    /* علشان الماوس يعدي من غير ما يمنع التفاعل */
+}
 
 /*// Border Animation END//*/
 
@@ -184,31 +227,33 @@ a {
 .reserve {
     text-align: center;
     margin-top: 30px;
-    font-size: 1.6rem;
-    color: #7C5B00;
+    font-size: 2.5rem;
+    color: #ce9a28;
 }
 
 .ticket-btn {
     margin-top: 15px;
     padding: 8px 10px;
-    border: 1px solid #7C5B00;
+    border: 1px solid #ce9a28;
     background: transparent;
-    color: #7C5B00;
+    color: #ce9a28;
     border-radius: 20px;
-    font-size: 1rem;
+    font-size: 1.5rem;
     cursor: pointer;
+    font-family: 'Times New Roman', Times, serif;
 
     a {
         text-decoration: none;
-        color: #7C5B00;
+        color: #ce9a28;
     }
 }
 
 .timer-title {
-    font-size: 2.5rem;
+    font-size: 3.4rem;
     color: #fff;
     margin-bottom: 24px;
-    font-weight: bold;
+    font-weight: 200;
+    font-family: 'oggRoman';
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
 }
 
@@ -217,14 +262,14 @@ a {
     justify-content: space-around;
     align-items: center;
     gap: 20px;
-    margin: 16px;
+    /* margin: 16px; */
     direction: ltr;
 
 }
 
 .timer-display span {
-    border: 1px solid rgba(238, 255, 255, 0.238);
-    height: 25px;
+    border-right: 1px solid #fff;
+    height: 40px;
     margin: auto;
 }
 
@@ -235,7 +280,7 @@ a {
 
 
 .time-value {
-    font-size: 3rem;
+    font-size: 3.3rem;
     font-weight: 300;
     color: #7C5B00;
     line-height: 1;
@@ -244,7 +289,7 @@ a {
 }
 
 .time-label {
-    font-size: 0.5rem;
+    font-size: 1rem;
     color: #7C5B00;
     font-weight: 100;
     text-transform: uppercase;
@@ -316,17 +361,24 @@ a {
     }
 
     .time-label {
-        font-size: 0.9rem;
+        font-size: 0.7rem;
+    }
+    .reserve{
+        font-size: 1.5rem;
+    }
+    .ticket-btn{
+        font-size: 1rem;
     }
 }
 
 @media (max-width: 480px) {
-.glow-box {
+    .glow-box {
         width: 95%;
         margin: 10px;
         padding: 6px;
         height: 70px;
-}
+    }
+
     .timer-display {
         gap: 10px;
         margin: 3px;
@@ -353,6 +405,7 @@ a {
         font-size: 2rem;
     }
 }
+
 /* 
 .time-unit.animate {
     animation: bounce 0.6s ease-in-out;
@@ -371,7 +424,7 @@ a {
 } */
 
 body.custom-bg {
-    background-image: var(--custom-background);
+    background-image: url(imgs/backgroundGem.jpg);
 }
 
 :root {
