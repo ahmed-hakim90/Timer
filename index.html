@@ -4,98 +4,95 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Counter Down</title>
+    <title>Gem</title>
+
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <div class=" Container">
+    <div class="Container">
 
-        <div class="logo-in-top">LOGO</div>
-        <!-- الحاوية الرئيسية للتايمر -->
+        <div class="logo-in-top">
+
+            <img src="icons/GEM Logo.svg" alt="Logo" class="logo-in-top">
+        </div>
+        <!-- main center box for timer and buttons -->
         <div class="timer-container">
+
+            <!-- label for timer above the timer -->
             <p class="timer-title">
                 A new era of ancient </br>
                 <span></span>wonders begins in...<span></span>
             </p>
+            <!-- BOX FOR TIMER and animation glowing effect -->
+            <div class="glow-box ">
 
-            <div class="center-box">
-                <!-- START Box -->
-            
+                <!-- Inside the Box all the timer elements -->
+                <div class="timer-display">
 
-                <div class="animated-border-box-glow"></div>
-                <div class="animated-border-box">
-                    <!-- Inside the Box -->
-                    <div class="timer-display">
-
-                        <!-- الأيام -->
-                        <div class="time-unit">
-                            <div class="time-value" id="days">30</div>
-                            <div class="time-label">Days</div>
-                        </div>
-                        <span></span>
-
-                        <!-- الساعات -->
-                        <div class="time-unit">
-                            <div class="time-value" id="hours">00</div>
-                            <div class="time-label">Hours</div>
-                        </div>
-                        <span></span>
-
-                        <!-- الدقائق -->
-                        <div class="time-unit">
-                            <div class="time-value" id="minutes">00</div>
-                            <div class="time-label">Mins</div>
-                        </div>
-                        <span></span>
-
-                        <!-- الثواني -->
-                        <div class="time-unit">
-                            <div class="time-value" id="seconds">00</div>
-                            <div class="time-label">Secs</div>
-                        </div>
+                    <!-- DAYS -->
+                    <div class="time-unit">
+                        <div class="time-value" id="days">30</div>
+                        <div class="time-label">Days</div>
                     </div>
+                    <span></span>
 
+                    <!-- Hours -->
+                    <div class="time-unit">
+                        <div class="time-value" id="hours">00</div>
+                        <div class="time-label">Hours</div>
+                    </div>
+                    <span></span>
 
-                    <!-- رسالة انتهاء الوقت (مخفية في البداية) -->
-                    <div class="finished-message" id="finishedMessage" style="display: none;">
-                        <h2>انتهى الوقت!</h2>
-                        <p>تم الوصول إلى نهاية العد التنازلي</p>
-                        <button onclick="resetTimer()" class="reset-button">إعادة تشغيل العداد</button>
+                    <!-- Mins -->
+                    <div class="time-unit">
+                        <div class="time-value" id="minutes">00</div>
+                        <div class="time-label">Mins</div>
+                    </div>
+                    <span></span>
+
+                    <!-- Secs -->
+                    <div class="time-unit">
+                        <div class="time-value" id="seconds">00</div>
+                        <div class="time-label">Secs</div>
                     </div>
                 </div>
-                <!-- END -->
-            </div>
-            <div class="bulk-glowing">
-            </div>
 
+                <!-- dont customize this part will be customize-->
+                <!-- Message for timer is end -->
+                <div class="finished-message" id="finishedMessage" style="display: block;">
+                    <h2>Timer Is End</h2>
+                    <p>Go To Website Now</p>'
+                    
+                    <!-- this is btn has link main site -->
+                    <button onclick="resetTimer()" class="reset-button">Go To Website</button>
+                </div>
+            </div>
+            <!-- END -->
 
+            <!-- this reserve section and Time Opend -->
             <div class="reserve">
                 <p class="text-under-counter">
                     Opening to the public on 6 July
-    
                 </p>
-                <button class="button ticket-btn" ><a href="https://visit-gem.com/en/GEMIntro_blank" >
-
-                    Click here to reserve your ticket
-                </a>
+                <button class="button ticket-btn">
+                    <a href="https://visit-gem.com/en/GEMIntro_blank">
+                        Click here to reserve your ticket
+                    </a>
                 </button>
             </div>
         </div>
     </div>
-    <div class="list-icon">
-
-        <ul class="icon-in-bottom">
-            <li>4</li>
-            <li>5</li>
-            <li>5</li>
-        </ul>
+    <!-- this is img change for bottom left side  -->
+     <!-- logo container has img background and this 2 img change in frame  -->
+    <div class="logo-container">
+        <img src="icons/Iconspng/1-01.png" alt="" class="logo1" srcset="">
+        <img src="icons/Iconspng/1-04.png" alt="" class="logo2" srcset="">
     </div>
 
     </div>
-    <!-- تحميل ملف JavaScript -->
+    <!--  JavaScript -->
     <script src="script.js"></script>
 </body>
 
 </html>
-*-

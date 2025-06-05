@@ -32,81 +32,78 @@ body {
     background-position: center;
 }
 
-a{
+a {
     text-decoration: none;
-    color: none
-    ;
+    color: none;
 }
 
 /*// Glow Border Animation //*/
-
-.animated-border-box,
-.animated-border-box-glow {
-    max-width: 600px;
-    /* height: 120px; */
-    width: 100%;
-    position: absolute;
-    overflow: hidden;
-
-    /* top:45%; */
-    z-index: 0;
-    /* Border Radius */
-    border-radius: 60px;
-}
-
-.animated-border-box-glow {
-    overflow: hidden;
-    /* Glow Blur */
-    filter: blur(8px);
-}
-
-.animated-border-box:before,
-.animated-border-box-glow:before {
-    content: '';
-    z-index: -2;
-    text-align: center;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) rotate(0deg);
-    position: absolute;
-    width: 99999px;
-    height: 99999px;
-    background-repeat: no-repeat;
-    background-position: 0 0;
-    /*border color, change middle color*/
-    background-image: conic-gradient(rgba(0, 0, 0, 0), #7C5B00, rgba(0, 0, 0, 0) 25%);
-    /* change speed here */
-    animation: rotate 4s linear infinite;
-}
-
-.animated-border-box:after {
-    content: '';
-    position: absolute;
-    z-index: -1;
-    /* border width */
-    left: 1px;
-    top: 1px;
-    /* double the px from the border width left */
-    width: calc(100% - 1px);
-    height: calc(100% - 2px);
-    /*bg color*/
-    background: #141414;
-    /*box border radius*/
-    border-radius: 60px;
-}
-
-@keyframes rotate {
-    100% {
-        transform: translate(-50%, -50%) rotate(1turn);
+    .glow-box {
+      position: relative;
+      max-width: 580px;
+      max-height: 120px;
+      border-radius: 60px;
+      background: #111;
+      z-index: 1;
+      overflow: hidden;
     }
-    
+
+    .glow-box::before {
+      content: "";
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: conic-gradient(
+        from 0deg,
+        transparent 0deg,
+        #7C5B00 90deg,
+        transparent 180deg,
+        #7C5B00 27deg,
+        transparent 360deg
+      );
+      animation: rotateGlow 4s linear infinite;
+      z-index: 2;
+      filter: blur(6px);
+      border-radius: 60px;
+    }
+
+    .glow-box::after {
+      content: "";
+      position: absolute;
+      top: 2px;
+      left: 2px;
+      right: 2px;
+      bottom: 2px;
+      background: #111;
+      border-radius: 60px;
+      z-index: 3;
+    }
+
+    @keyframes rotateGlow {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+    .timer-display {
+  position: relative;
+  z-index: 5; /* فوق التوهج */
+  color: white;
+  text-align: center;
+  padding: 20px;
+  font-family: Arial, sans-serif;
 }
 
 .logo-in-top {
     position: fixed;
-    right: 0;
-    top: 0;
+    right: 20px;
+    top: 20px;
     left: auto;
+    max-width: 90px;
     /* justify-content: end; */
     color: aliceblue;
 }
@@ -116,75 +113,72 @@ a{
     /* flex-direction: column; */
     /* align-items: end; */
     position: fixed;
-    bottom: 0;
-    left: 0;
-}
+    bottom: 20px;
+    left: -10px;
+    img{
+        /* max-width: px; */
+        max-height: 100px;
 
-[dir="rtl"] .list-icon {
-    left: auto;
-    /* Reset left positioning */
-    right: 0;
-    /* Position from the right */
+    }
 }
+ .logo-container {
+      position: fixed;
+      bottom: 10px;
+      left: -20px;
+      width: 150px;
+      height: 150px;
+ background-image: url('icons/Iconspng/1-03.png'); /* 🔁 هنا صورة البرواز */
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
 
-.icon-in-bottom {
-    color: aliceblue;
-}
+    .logo-container img {
+
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      top: 0;
+      left: 0;
+      opacity: 0;
+      animation: fadeLoop 4s infinite ease-in-out;
+    }
+
+    .logo-container .logo2 {
+      animation-delay: 2s; /* تبدأ متأخرة عن الأولى */
+    }
+
+    @keyframes fadeLoop {
+      0%, 20%   { opacity: 1; }
+      50%, 100% { opacity: 0; }
+    }
+    
+    .frame {
+      z-index: 10; /* فوق اللوجوهات */
+      pointer-events: none; /* علشان الماوس يعدي من غير ما يمنع التفاعل */
+    }
 
 /*// Border Animation END//*/
-.Container {
-    /* display: flex;     */
-    /* height: 100vh; */
-    /* display: grid */
 
-    /* place-items: ; */
-}
 
 
 /* الحاوية الرئيسية للتايمر */
 .timer-container {
-     position: absolute; 
-    transform: translate(-50%, -50%); 
-    /* Or fixed, if you want it to stay centered on scroll */
+    position: absolute;
+    transform: translate(-50%, -50%);
     top: 47%;
     left: 50%;
-    /* Keep its width and height */
-    /* You might need to adjust z-index if it overlaps with other elements */
     z-index: 10;
-    /* Example */
-    /* display: flex; */
-    /* flex-direction: column; */
-    /* justify-content: center; */
-    /* Centers items horizontally */
-    /* align-items: center; */
-    /* Centers items vertically if desired */
-    /* min-height: 80vh; */
-    /* Optional: to center vertically on the viewport height */
     margin: 0;
-    /* Reset default body margin */
-    /* display: flex; */
-    /* justify-content: center; */
-    /* align-items: center; */
     margin-left: auto;
     margin-right: auto;
-    /* Keep your existing width */
     width: 100%;
-    /* max-height: 120px; */
     border-radius: 50px;
     text-align: center;
     max-width: 580px;
-    /* الخط الذهبي الثابت حول البوكس */
-    /* background: linear-gradient(100deg, transparent, #ea9a00, transparent); */
-      /* position: relative; يسمح للعناصر المطلقة جوّه تكون مرتبطة بيه */
-  /* width: 800px; */
-  /* margin: 40px auto; */
-  /* background: #111; */
-  border-radius: 50px;
-  overflow: hidden;
-}
-.bulk-glowing{
-height: 100px;
-width: 200px;
+    border-radius: 50px;
+    overflow: hidden;
 }
 
 .reserve {
@@ -195,23 +189,21 @@ width: 200px;
 }
 
 .ticket-btn {
-  margin-top: 15px;
-  padding: 8px 10px;
-  border: 1px solid #7C5B00;
-  background: transparent;
-  color: #7C5B00;
-  border-radius: 20px;
-  font-size: 1rem;
-  cursor: pointer;
-  
-a{
-    text-decoration: none;
-    color: #7C5B00
-    ;
-}
+    margin-top: 15px;
+    padding: 8px 10px;
+    border: 1px solid #7C5B00;
+    background: transparent;
+    color: #7C5B00;
+    border-radius: 20px;
+    font-size: 1rem;
+    cursor: pointer;
+
+    a {
+        text-decoration: none;
+        color: #7C5B00;
+    }
 }
 
-/* عنوان التايمر */
 .timer-title {
     font-size: 2.5rem;
     color: #fff;
@@ -220,53 +212,39 @@ a{
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-/* عرض التايمر */
 .timer-display {
     display: flex;
     justify-content: space-around;
     align-items: center;
     gap: 20px;
     margin: 16px;
-    /* justify-content: space-around; */
-    /* flex-wrap: wrap; */
     direction: ltr;
-    /* margin-bottom: 20px; */
 
 }
 
 .timer-display span {
     border: 1px solid rgba(238, 255, 255, 0.238);
-    height: 35px;
-    margin-top: 15px;
+    height: 25px;
+    margin: auto;
 }
 
-/* وحدة الوقت الفردية */
 .time-unit {
-    /* background: #444;; */
     padding: 1px;
-    /* margin: 10px; */
-    /* box-shadow: 
-        5px 5px 15px rgba(0, 0, 0, 0.2),
-        -5px -5px 15px rgba(255, 255, 255, 0.7);
-    transition: transform 0.3s ease; */
 }
 
 
 
-/* قيمة الوقت */
 .time-value {
     font-size: 3rem;
     font-weight: 300;
     color: #7C5B00;
     line-height: 1;
     margin-bottom: 5px;
-    font-family: 'Courier New', monospace;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
 }
 
-/* تسمية الوقت */
 .time-label {
-    font-size: 0.6rem;
+    font-size: 0.5rem;
     color: #7C5B00;
     font-weight: 100;
     text-transform: uppercase;
@@ -274,14 +252,13 @@ a{
 }
 
 
-/* رسالة انتهاء الوقت */
 .finished-message {
     animation: pulse 2s infinite;
 }
 
 .finished-message h2 {
     font-size: 2.5rem;
-    color: #e74c3c;
+    color: #7C5B00;
     margin-bottom: 15px;
     font-weight: bold;
 }
@@ -292,9 +269,8 @@ a{
     margin-bottom: 25px;
 }
 
-/* زر إعادة التشغيل */
 .reset-button {
-    background: linear-gradient(45deg, #3498db, #2980b9);
+    background: linear-gradient(45deg, #7C5B00, #7C5B00);
     color: white;
     border: none;
     padding: 15px 30px;
@@ -307,27 +283,20 @@ a{
 }
 
 .reset-button:hover {
-    background: linear-gradient(45deg, #2980b9, #3498db);
+    background: linear-gradient(45deg, #7C5B00, #7C5B00);
     transform: translateY(-2px);
     box-shadow: 0 6px 20px rgba(52, 152, 219, 0.6);
 }
 
-/* 
-/* تصميم متجاوب للشاشات الصغيرة */
+
 @media (max-width: 768px) {
 
     .animated-border-box,
-    .animated-border-box-glow {
-        /* display: flex; */
+    .animated-border-box-glow,
+    .glow-box {
         width: 95%;
-
         margin: 10px;
         padding: 2px;
-    }
-
-    .timer-container {
-        /* padding: 25px; */
-        /* width: 95%; */
     }
 
     .timer-title {
@@ -354,10 +323,8 @@ a{
 }
 
 @media (max-width: 480px) {
-    .bulk-glowing{
-height: 60px;
-width: 200px;
-}
+
+
     .timer-display {
         gap: 10px;
         margin: 3px;
@@ -366,7 +333,6 @@ width: 200px;
 
     .time-unit {
         min-width: 70px;
-        /* padding: 12px; */
     }
 
     .time-value {
@@ -385,8 +351,7 @@ width: 200px;
         font-size: 2rem;
     }
 }
-
-/* تأثيرات إضافية للحركة */
+/* 
 .time-unit.animate {
     animation: bounce 0.6s ease-in-out;
 }
@@ -401,14 +366,12 @@ width: 200px;
     50% {
         transform: translateY(-10px);
     }
-}
+} */
 
-/* تخصيص للخلفية المخصصة */
 body.custom-bg {
     background-image: var(--custom-background);
 }
 
-/* متغيرات CSS للتخصيص المستقبلي */
 :root {
     --primary-color: #7C5B00;
     --secondary-color: #764ba2;
