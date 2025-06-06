@@ -19,6 +19,19 @@
     src: url(Fonts/Gotham-Thin.otf);
     font-family: GretaArabic;
     src: url(Fonts/GretaArabic-Light.otf);
+    font-family: GothamLight;
+    src: url(Fonts/Gotham-Light.woff);
+    font-family: GothamBook;
+    src: url(Fonts/Gotham-Book.woff);
+}
+@font-face {
+    font-family: "Ogg Roman";
+    src: url("https://db.onlinewebfonts.com/t/2596224269750e00c3ad5356299a3b9f.eot");
+    src: url("https://db.onlinewebfonts.com/t/2596224269750e00c3ad5356299a3b9f.eot?#iefix")format("embedded-opentype"),
+    url("https://db.onlinewebfonts.com/t/2596224269750e00c3ad5356299a3b9f.woff2")format("woff2"),
+    url("https://db.onlinewebfonts.com/t/2596224269750e00c3ad5356299a3b9f.woff")format("woff"),
+    url("https://db.onlinewebfonts.com/t/2596224269750e00c3ad5356299a3b9f.ttf")format("truetype"),
+    url("https://db.onlinewebfonts.com/t/2596224269750e00c3ad5356299a3b9f.svg#Ogg Roman")format("svg");
 }
 html, body {
   margin: 0;
@@ -131,7 +144,7 @@ a {
     right: 20px;
     top: 20px;
     left: auto;
-    max-width: 90px;
+    max-width: 110px;
     /* justify-content: end; */
     color: aliceblue;
 }
@@ -151,7 +164,7 @@ a {
     }
 }
 
-.logo-container {
+.icon-frame {
     position: fixed;
     bottom: 10px;
     left: -20px;
@@ -209,6 +222,62 @@ a {
     /* علشان الماوس يعدي من غير ما يمنع التفاعل */
 }
 
+.icon-frame {
+  
+    position: absolute;
+bottom: -20px;
+left: -20px;
+  width: 100;
+  height: 200px;
+  /* margin: 50px; */
+}
+
+/* Base style for all */
+.icon-frame img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  opacity: 0;
+}
+
+/* Frame appears first */
+.frame {
+  animation: frameAnim 10s infinite;
+}
+
+/* Icons 1 appear after frame */
+.icons-1 {
+  animation: icons1Anim 10s infinite;
+}
+
+/* Icons 2 appear after icons 1 */
+.icons-2 {
+  animation: icons2Anim 10s infinite;
+}
+
+/* Frame animation */
+@keyframes frameAnim {
+  0%   { opacity: 0; }
+  5%   { opacity: 1; }
+  85%  { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+/* First icons */
+@keyframes icons1Anim {
+  0%, 10%   { opacity: 0; }
+  15%, 35%  { opacity: 1; }
+  40%, 100% { opacity: 0; }
+}
+
+/* Second icons */
+@keyframes icons2Anim {
+  0%, 40%   { opacity: 0; }
+  45%, 65%  { opacity: 1; }
+  70%, 100% { opacity: 0; }
+}
+
 /*// Border Animation END//*/
 
 
@@ -234,18 +303,19 @@ a {
 .reserve {
     text-align: center;
     margin-top: 30px;
-    font-size: 2.5rem;
+    font-size: 1.8rem;
+
     color: #ce9a28;
 }
 
 .ticket-btn {
     margin-top: 15px;
-    padding: 8px 10px;
+    padding: 8px 16px;
     border: 1px solid #ce9a28;
     background: transparent;
     color: #ce9a28;
     border-radius: 20px;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     cursor: pointer;
     font-family: 'Times New Roman', Times, serif;
 
@@ -256,11 +326,12 @@ a {
 }
 
 .timer-title {
-    font-size: 3.4rem;
+    font-size: 2.4rem;
     color: #fff;
     margin-bottom: 24px;
     font-weight: 200;
-    font-family: 'oggRoman';
+    font-family: "Ogg Roman";
+    line-height: 1;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
 }
 
@@ -275,32 +346,36 @@ a {
 }
 
 .timer-display span {
-    border-right: 1px solid #fff;
+    border-right: 1px solid #fffff9a8;
     height: 40px;
     margin: auto;
 }
 
 .time-unit {
-    padding: 1px;
+    /* padding: 10px  16px ; */
+    margin: 0 28px;
 }
 
 
 
 .time-value {
-    font-size: 3.3rem;
-    font-weight: 300;
+    font-size: 2.3rem;
+    /* font-weight: 300; */
     color: #7C5B00;
     line-height: 1;
     margin-bottom: 5px;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+    font-family: GothamBook;
+    font-weight: 600;
 }
 
 .time-label {
-    font-size: 1rem;
+    font-size: 0.7rem;
     color: #7C5B00;
     font-weight: 100;
     text-transform: uppercase;
     letter-spacing: 1px;
+    font-family: GothamBook;
 }
 
 
@@ -394,6 +469,8 @@ a {
 
     .time-unit {
         min-width: 70px;
+        margin: 0 10px;
+
     }
 
     .time-value {
