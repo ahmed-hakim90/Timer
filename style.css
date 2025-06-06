@@ -368,7 +368,9 @@ left: -20px;
     letter-spacing: 1px;
     font-family: GothamBook;
 }
-
+.time-label.ar{
+    width: 50px;
+}
 
 .finished-message {
     animation: pulse 2s infinite;
