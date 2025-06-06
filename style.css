@@ -490,11 +490,17 @@ body.custom-bg {
     }
 
     .timer-title {
-        font-size: 1.8rem;
+        font-size: 1.75rem;
     }
 
     .finished-message h2 {
         font-size: 2rem;
+    }
+    .reserve{
+        font-size: 1.1rem;
+    }
+    .ticket-btn{
+        font-size: 0.7rem;
     }
 }
 
