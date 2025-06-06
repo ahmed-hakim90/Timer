@@ -22,10 +22,22 @@ body.custom-bg {
     src: url(Fonts/Gotham-Thin.otf);
     font-family: GretaArabic;
     src: url(Fonts/GretaArabic-Light.otf);
-    font-family: GothamLight;
-    src: url(Fonts/Gotham-Light.woff);
+}
+
+@font-face {
     font-family: GothamBook;
     src: url(Fonts/Gotham-Book.woff);
+    
+}
+@font-face {
+    font-family: GothamLight;
+    src: url(Fonts/Gotham-Light.woff);
+   
+}
+@font-face {
+    font-family: GretaArabic;
+    src: url(Fonts/GretaArabic-Light.woff);
+   
 }
 @font-face {
     font-family: "Ogg Roman";
@@ -151,7 +163,21 @@ a {
     /* justify-content: end; */
     color: aliceblue;
 }
-
+.btn-lang {
+    margin: 40px 35px ;
+    padding: 5.5px 0;
+text-align: center;
+    width: 30px;
+    height: 30px;
+    background-color: rgb(234, 114, 0);
+    border-radius: 8px;
+}
+.btn-lang a {
+    text-align: center;
+    color: #FFF !important;
+    display: block;
+    /* font-family: "greta-ar"; */
+}
 .list-icon {
     /* display: flex; */
     /* flex-direction: column; */
@@ -177,45 +203,6 @@ a {
     /* background-size: cover; */
     /* background-position: center; */
     /* background-repeat: no-repeat; */
-}
-
-.logo-container img {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    top: 0;
-    left: 0;
-    opacity: 0;
-    animation: fadeLoop 10s infinite ease-in-out;
-}
-
-.logo-container .logo2 {
-    animation-delay: 2s;
-    /* تبدأ متأخرة عن الأولى */
-}
-
-.logo-container .logo3 {
-    animation-delay: 6s;
-    /* تبدأ متأخرة عن الأولى */
-}
-
-.logo-container .logo4 {
-    animation-delay: 6s;
-    /* تبدأ متأخرة عن الأولى */
-}
-
-@keyframes fadeLoop {
-
-    0%,
-    20% {
-        opacity: 1;
-    }
-
-    50%,
-    100% {
-        opacity: 0;
-    }
 }
 
 .frame {
@@ -363,7 +350,7 @@ left: -20px;
 
 
 .time-value {
-    font-size: 2.3rem;
+    font-size: 2.1rem;
     /* font-weight: 300; */
     color: #7C5B00;
     line-height: 1;
@@ -423,7 +410,7 @@ left: -20px;
 @media (max-width: 768px) {
 
     .glow-box {
-        width: 95%;
+        width: 90%;
         margin: 10px;
         padding: 2px;
     }
@@ -458,7 +445,14 @@ left: -20px;
 }
 
 @media (max-width: 480px) {
-    
+    .btn-lang {
+    margin: 40px 25px ;
+
+}
+    .logo-in-top{
+        top:10px;
+        right: 10px;
+    }
 body.custom-bg {
     background-image: url(imgs/bgMobile.jpg);
 }
@@ -528,4 +522,10 @@ body.custom-bg {
     --accent-color: #3498db;
     --text-color: #333;
     --background-overlay: rgba(255, 255, 255, 0.95);
+}
+.ar{
+font-family: GretaArabic;
+}
+.en{
+font-family: GothamBook;
 }
