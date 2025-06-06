@@ -1,5 +1,5 @@
 // متغيرات التايمر الرئيسية
-let countdownDate;
+let countdownDate = new Date(Date.UTC(2025, 6, 6, 17, 0, 0));;
 let timerInterval;
 
 // عناصر HTML
@@ -12,15 +12,13 @@ const timerDisplay = document.querySelector('.timer-display');
 
 /**
  * تهيئة التايمر عند تحميل الصفحة
- */
-function initializeTimer() {
+ */function initializeTimer() {
     // التحقق من وجود وقت محفوظ في Local Storage
     const savedEndTime = localStorage.getItem('countdownEndTime');
-
     if (savedEndTime) {
         // استخدام الوقت المحفوظ
         countdownDate = new Date(savedEndTime);
-        console.log(savedEndTime);
+        console.log("من Local Storage:", countdownDate);
 
         // التحقق من صحة الوقت المحفوظ
         if (countdownDate <= new Date()) {
@@ -29,10 +27,10 @@ function initializeTimer() {
             return;
         }
     } else {
-        // إنشاء تايمر جديد (30 يوم من الآن)
-        countdownDate = new Date('2025-07-06T17:00:00');
-        // countdownDate.setDate(countdownDate.getDate());
-        console.log(countdownDate);
+        // تحديد تاريخ الانتهاء الجديد: 6 يوليو 2025 الساعة 17:00
+countdownDate = new Date(Date.UTC(2025, 6, 6, 17, 0, 0)); // يوليو = 6
+
+// console.log(countdownDate);
         // حفظ وقت الانتهاء في Local Storage
         localStorage.setItem('countdownEndTime', countdownDate.toISOString());
     }
@@ -40,6 +38,7 @@ function initializeTimer() {
     // بدء التايمر
     startTimer();
 }
+
 
 /**
  * بدء تشغيل التايمر
@@ -59,7 +58,7 @@ function updateTimer() {
     // الحصول على الوقت الحالي
     const now = new Date().getTime();
     const endTime = countdownDate.getTime();
-
+console.log(now);
     // حساب الفرق الزمني
     const timeLeft = endTime - now;
 
@@ -132,9 +131,6 @@ function finishTimer() {
 
     // حذف الوقت المحفوظ
     localStorage.removeItem('countdownEndTime');
-
-    // تشغيل صوت تنبيه (اختياري)
-    playNotificationSound();
 }
 
 /**

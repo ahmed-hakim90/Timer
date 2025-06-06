@@ -114,11 +114,11 @@ a {
         #ce9a28 27deg,
         transparent 360deg
       ); */
-    background-image: conic-gradient(rgba(0, 0, 0, 0), #ce9a28, rgba(0, 0, 0, 0) 30%);
+    background-image: conic-gradient(rgba(0, 0, 0, 0), #ce9a28, rgba(0, 0, 0, 0) 50%);
 
     animation: rotateGlow 4s linear infinite;
     z-index: 2;
-    filter: blur(12px);
+    filter: blur(1px);
     border-radius: 60px;
 }
 
