@@ -204,7 +204,8 @@ text-align: center;
       z-index: 1;
     }
     .icons-1{
-        left:8px;
+        width: 83px !important;
+        /* left:8px; */
     }
    .icons-1, .icons-2 {
       opacity: 0;
