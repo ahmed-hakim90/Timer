@@ -9,17 +9,6 @@ body.custom-bg {
 }
 
 @font-face {
-    font-family: ConsoExtraLight;
-    src: url(Fonts/Conso-ExtraLight.otf);
-    font-family: ConsoThin;
-    font-family: oggRoman;
-    src: url(Fonts/Ogg-Roman.ttf);
-    font-family: ConsoThin;
-    src: url(Fonts/Conso-Thin.otf);
-    font-family: GothamBold;
-    src: url(Fonts/Gotham-Bold.otf);
-    font-family: GothamThin;
-    src: url(Fonts/Gotham-Thin.otf);
     font-family: GretaArabic;
     src: url(Fonts/GretaArabic-Light.otf);
 }
@@ -115,10 +104,9 @@ a {
         transparent 360deg
       ); */
     background-image: conic-gradient(rgba(0, 0, 0, 0), #ce9a28, rgba(0, 0, 0, 0) 50%);
-
     animation: rotateGlow 4s linear infinite;
     z-index: 2;
-    filter: blur(1px);
+    filter: blur(10px);
     border-radius: 60px;
 }
 
