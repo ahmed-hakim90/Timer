@@ -90,7 +90,7 @@ a {
     max-width: 580px;
     max-height: 120px;
     border-radius: 60px;
-    background: #111;
+    background: #7c5b008c;
     z-index: 1;
     display: flex;
     overflow: hidden;
@@ -114,11 +114,11 @@ a {
         #ce9a28 27deg,
         transparent 360deg
       ); */
-    background-image: conic-gradient(rgba(0, 0, 0, 0), #ce9a28, rgba(0, 0, 0, 0) 25%);
+    background-image: conic-gradient(rgba(0, 0, 0, 0), #ce9a28, rgba(0, 0, 0, 0) 30%);
 
     animation: rotateGlow 4s linear infinite;
     z-index: 2;
-    filter: blur(6px);
+    filter: blur(12px);
     border-radius: 60px;
 }
 
@@ -159,7 +159,7 @@ a {
     right: 20px;
     top: 20px;
     left: auto;
-    max-width: 110px;
+    max-width: 90px;
     /* justify-content: end; */
     color: aliceblue;
 }
@@ -169,108 +169,56 @@ a {
 text-align: center;
     width: 30px;
     height: 30px;
-    background-color: rgb(234, 114, 0);
+    background-color: black;
     border-radius: 8px;
 }
 .btn-lang a {
     text-align: center;
-    color: #FFF !important;
+    color: #ce9a28 !important;
     display: block;
     /* font-family: "greta-ar"; */
 }
-.list-icon {
-    /* display: flex; */
-    /* flex-direction: column; */
-    /* align-items: end; */
-    position: fixed;
-    bottom: 20px;
-    left: -10px;
 
-    img {
-        /* max-width: px; */
-        max-height: 100px;
-
-    }
-}
 
 .icon-frame {
-    position: fixed;
-    bottom: 10px;
-    left: -20px;
-    width: 150px;
-    height: 150px;
-    /* background-image: url('icons/Iconspng/1-03.png'); 🔁 هنا صورة البرواز */
-    /* background-size: cover; */
-    /* background-position: center; */
-    /* background-repeat: no-repeat; */
-}
+      position: fixed;
+      bottom: 20px;
+      left: 18px;
+      width: 80px;
+      height: 100px;
+      background-image: url('icons/Iconspng/1-03.png'); /* 🔁 هنا صورة البرواز */
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;}
 
-.frame {
-    z-index: 10;
-    /* فوق اللوجوهات */
-    pointer-events: none;
-    /* علشان الماوس يعدي من غير ما يمنع التفاعل */
-}
 
-.icon-frame {
-  
-    position: absolute;
-bottom: -20px;
-left: -20px;
-  width: 100;
-  height: 200px;
-  /* margin: 50px; */
-}
 
 /* Base style for all */
 .icon-frame img {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  opacity: 0;
-}
+      width: 80px;
+      height: 100px;
+      object-fit: contain;
+      top: 0;
+      left: 0;
+      z-index: 1;
+    }
+    .icons-1{
+        left:8px;
+    }
+   .icons-1, .icons-2 {
+      opacity: 0;
+      animation: fadeLoop 4s infinite ease-in-out;
+    }
 
-/* Frame appears first */
-.frame {
-  animation: frameAnim 10s infinite;
-}
+    .icons-2 {
+        animation-delay: 2s;
+    }
 
-/* Icons 1 appear after frame */
-.icons-1 {
-    padding-left: 5px;
-  animation: icons1Anim 10s infinite;
-}
-
-/* Icons 2 appear after icons 1 */
-.icons-2 {
-  animation: icons2Anim 10s infinite;
-}
-
-/* Frame animation */
-@keyframes frameAnim {
-  0%   { opacity: 0; }
-  5%   { opacity: 1; }
-  80%  { opacity: 1; }
-  100% { opacity: 0; }
-}
-
-/* First icons */
-@keyframes icons1Anim {
-  0%, 10%   { opacity: 0; }
-  15%, 35%  { opacity: 1; }
-  40%, 100% { opacity: 0; }
-}
-
-/* Second icons */
-@keyframes icons2Anim {
-  0%, 40%   { opacity: 0; }
-  45%, 65%  { opacity: 1; }
-  70%, 100% { opacity: 0; }
-}
-
-/*// Border Animation END//*/
-
+    @keyframes fadeLoop {
+      0%, 20%   { opacity: 1; }
+      50%, 100% { opacity: 0; }
+    }
 
 
 /* الحاوية الرئيسية للتايمر */
@@ -295,14 +243,16 @@ left: -20px;
     text-align: center;
     margin-top: 30px;
     font-size: 1.8rem;
-
     color: #ce9a28;
+}
+.reserve.ar{
+    margin-top: 8px;
 }
 
 .ticket-btn {
     margin-top: 15px;
     padding: 8px 16px;
-    border: 1px solid #ce9a28;
+    border: 1px solid #fff;
     background: transparent;
     color: #ce9a28;
     border-radius: 20px;
@@ -353,12 +303,12 @@ left: -20px;
 .time-value {
     font-size: 2.1rem;
     /* font-weight: 300; */
-    color: #7C5B00;
+    color: #ce9928b1;
     line-height: 1;
     margin-bottom: 5px;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
     font-family: GothamBook;
-    font-weight: 600;
+    font-weight: 00;
 }
 
 .time-label {
@@ -448,6 +398,15 @@ left: -20px;
 }
 
 @media (max-width: 480px) {
+.icon-frame{
+    width: 80px;
+    left: -8px;
+}
+.icon-frame img {
+    width: 82px;
+    height: 110px;
+    top: -4px;
+}
     .time-label.ar{
     width: 70px;
 }
