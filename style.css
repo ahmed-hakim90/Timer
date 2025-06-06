@@ -165,10 +165,10 @@ a {
 }
 .btn-lang {
     margin: 40px 35px ;
-    padding: 5.5px 0;
+    padding: 7px 0;
 text-align: center;
-    width: 30px;
-    height: 30px;
+    width: 40px;
+    height: 40px;
     background-color: black;
     border-radius: 8px;
     border: 1px solid #ce9a28;
@@ -181,47 +181,50 @@ text-align: center;
 }
 
 
-.icon-frame {
-      position: fixed;
-      bottom: 20px;
-      left: 18px;
-      width: 80px;
-      height: 100px;
-      background-image: url('icons/Iconspng/1-03.png'); /* 🔁 هنا صورة البرواز */
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;}
-
-
-
 /* Base style for all */
-.icon-frame img {
+.frame-wrapper {
+  width: 150px;
+  height: 180px;
+  background: url('icons/Iconspng/1-03.png') no-repeat center center;
+  background-size: contain;
   position: absolute;
-      width: 80px;
-      height: 100px;
-      object-fit: contain;
-      top: 0;
-      left: 0;
-      z-index: 1;
-    }
-    .icons-1{
-        width: 83px !important;
-        /* left:8px; */
-    }
-   .icons-1, .icons-2 {
-      opacity: 0;
-      animation: fadeLoop 4s infinite ease-in-out;
-    }
+  bottom: 0;
+  left: -10px;
+  overflow: hidden;
+}
 
-    .icons-2 {
-        animation-delay: 2s;
-    }
+/* الصور جوه نفس المكان */
+.image-switcher {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
 
-    @keyframes fadeLoop {
-      0%, 20%   { opacity: 1; }
-      50%, 100% { opacity: 0; }
-    }
+/* الصورة الأساسية */
+.img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  opacity: 0;
+  animation: fadeSwitch 6s infinite ease-in-out;
+}
 
+/* تأخير الصورة الثانية */
+.img-2 {
+  animation-delay: 3s;
+}
+
+/* أنيميشن يظهر ويخفي الصورة */
+@keyframes fadeSwitch {
+  0% { opacity: 0; }
+  10% { opacity: 1; }
+  40% { opacity: 1; }
+  50% { opacity: 0; }
+  100% { opacity: 0; }
+}
 
 /* الحاوية الرئيسية للتايمر */
 .timer-container {
@@ -404,15 +407,10 @@ text-align: center;
 }
 
 @media (max-width: 480px) {
-.icon-frame{
-    width: 80px;
-    left: -8px;
-}
-.icon-frame img {
-    width: 82px;
-    height: 110px;
-    top: -4px;
-}
+.frame-wrapper {
+  width: 120px;}
+
+
     .time-label.ar{
     width: 70px;
 }
